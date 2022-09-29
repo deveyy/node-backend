@@ -4,9 +4,11 @@ import cors from 'cors';
 import helmet from 'helmet';
 import hpp from 'hpp';
 import compression from 'compression';
-import cookierSession from 'cookie-session';
+import cookieSession from 'cookie-session';
 import HTTP_STATUS from 'http-status-codes';
-import 'express-async-errors'
+import 'express-async-errors';
+
+import { config } from './config';
 
 const SERVER_PORT = 5000;
 
@@ -28,18 +30,18 @@ export class bdigitalServer {
 
     private securityMiddleware(app: Application): void{
         app.use(
-            cookierSession({
+            cookieSession({
                name: 'session',
-               keys: ['bdigital1', 'bdigital2'],
+               keys: [config.SECRET_KEY_ONE!, config.SECRET_KEY_TWO!],
                maxAge: 24 * 7 * 3600000,
-               secure: false 
+               secure: config.NODE_ENV !== 'development' 
             })
         );
         app.use(hpp());
         app.use(helmet());
         app.use(
             cors({
-                origin: '*',
+                origin: config.CLIENT_URL,
                 credentials: true,
                 optionsSuccessStatus: 200,
                 methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
