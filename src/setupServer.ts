@@ -40,7 +40,7 @@ export class bdigitalServer {
                name: 'session',
                keys: [config.SECRET_KEY_ONE!, config.SECRET_KEY_TWO!],
                maxAge: 24 * 7 * 3600000,
-               secure: config.NODE_ENV !== 'development' 
+               secure: config.NODE_ENV !== 'development'
             })
         );
         app.use(hpp());
@@ -67,7 +67,7 @@ export class bdigitalServer {
 
     private globalErrorHandler(app: Application): void{
         app.all('*', (req: Request, res: Response) => {
-           res.status(HTTP_STATUS.NOT_FOUND).json({ message: `${req.originalUrl} not found`}) 
+           res.status(HTTP_STATUS.NOT_FOUND).json({ message: `${req.originalUrl} not found`});
         });
         app.use((error: IErrorResponse, _req: Request, res: Response, next: NextFunction) => {
             log.error(error);
@@ -75,7 +75,7 @@ export class bdigitalServer {
                 return res.status(error.statusCode).json(error.serializeErrors());
             }
             next();
-        })
+        });
     }
 
     private async startServer(app: Application): Promise<void> {
@@ -109,9 +109,11 @@ export class bdigitalServer {
         log.info(`Server has started with process ${process.pid}`);
         httpServer.listen(SERVER_PORT, () => {
             log.info(`Server running on port ${SERVER_PORT}`);
-        })
+        });
     }
 
-    private socketIOConnections(io: Server): void {}
-    
+    private socketIOConnections(io: Server): void {
+      log.info('socketIOConnections');
+    }
+
 }
