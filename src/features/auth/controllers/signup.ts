@@ -1,9 +1,8 @@
-import { ISignUpData } from './../interfaces/auth.interface';
 import { ObjectId } from 'mongodb';
 import { Request, Response } from 'express';
 import { joiValidation } from '@global/decorators/joi-validation.decorators';
 import { signupSchema } from '@auth/schemas/signup';
-import { IAuthDocument } from '@auth/interfaces/auth.interface';
+import { IAuthDocument, ISignUpData } from '@auth/interfaces/auth.interface';
 import { BadRequestError } from '@global/helpers/error-handler';
 import { authService } from '@service/db/auth.service';
 import { Helpers } from '@global/helpers/helpers';
