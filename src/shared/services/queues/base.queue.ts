@@ -8,10 +8,12 @@ import { ExpressAdapter } from '@bull-board/express';
 
 import { config } from '@root/config';
 import { IAuthJob } from '@auth/interfaces/auth.interface';
+import { IUserJob } from '@user/interfaces/user.interface';
 
 
 type IBaseJobData =
-  | IAuthJob;
+  | IAuthJob
+  | IUserJob
 
 
 let bullAdapters: BullAdapter[] = [];
