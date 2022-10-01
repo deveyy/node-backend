@@ -115,7 +115,7 @@ Make sure mongodb and redis are both running on your local machine.
 - With that domain, manually create a route53 hosted zone on AWS.
 ![](https://res.cloudinary.com/dyamr9ym3/image/upload/v1662494233/github_readme_images/Screenshot_2022-09-06_at_9.55.11_PM_vzovub.png)
 - Copy the hosted zone NS properties and add to the nameservers section of your domain on the dashboard of your domain name provider. e.g: godaddy, namecheap etc.
-![](https://res.cloudinary.com/dyamr9ym3/image/upload/v1662494239/github_readme_images/Screenshot_2022-09-06_at_9.56.03_PM_ppb7ll.png)
+
 - For example, on namecheap.com
 ![](https://res.cloudinary.com/dyamr9ym3/image/upload/v1662494440/github_readme_images/Screenshot_2022-09-06_at_10.00.21_PM_fd32tx.png)
 
