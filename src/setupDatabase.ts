@@ -1,13 +1,15 @@
 import mongoose from 'mongoose';
-import { config } from './config';
 import Logger from 'bunyan';
+import { config } from './config';
 import { redisConnection } from '@service/redis/redis.connection';
 
 const log: Logger = config.createLogger('setUpDatabase');
 
 export default () => {
     const connect = () => {
-        mongoose.connect(`mongodb+srv://${config.MONGO_USERNAME}:${config.MONGO_PASSWORD}@${config.MONGO_URL}`)
+        mongoose
+            // .connect(`mongodb+srv://${config.MONGO_USERNAME}:${config.MONGO_PASSWORD}@${config.MONGO_URL}`)
+            .connect(`${config.MONGO_URL}`)
             .then(() => {
                 log.info('Successfully connected to database');
                 redisConnection.connect();

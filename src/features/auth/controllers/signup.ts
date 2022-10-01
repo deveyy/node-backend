@@ -3,35 +3,33 @@ import { Request, Response } from 'express';
 import { joiValidation } from '@global/decorators/joi-validation.decorators';
 import { signupSchema } from '@auth/schemas/signup';
 import { IAuthDocument, ISignUpData } from '@auth/interfaces/auth.interface';
-import { BadRequestError } from '@global/helpers/error-handler';
 import { authService } from '@service/db/auth.service';
 import { Helpers } from '@global/helpers/helpers';
 import { UploadApiResponse } from 'cloudinary';
 import { uploads } from '@global/helpers/cloudinary-upload';
-import  HTTP_STATUS  from 'http-status-codes';
+import HTTP_STATUS from 'http-status-codes';
 import { IUserDocument } from '@user/interfaces/user.interface';
 import { UserCache } from '@service/redis/user.cache';
-import { omit } from 'lodash';
+import JWT from 'jsonwebtoken';
 import { authQueue } from '@service/queues/auth.queue';
 import { userQueue } from '@service/queues/user.queue';
-import JWT from 'jsonwebtoken';
 import { config } from '@root/config';
+import { BadRequestError } from '@global/helpers/error-handler';
 
 const userCache: UserCache = new UserCache();
 
 export class SignUp {
   @joiValidation(signupSchema)
   public async create(req: Request, res: Response): Promise<void> {
-      const {username, email, password, avatarColor, avatarImage} = req.body;
-      const checkIfUserExist: IAuthDocument = await authService.getUserByUsernameOrEmail(username, email);
-    if (!checkIfUserExist) {
+    const { username, email, password, avatarColor, avatarImage } = req.body;
+    const checkIfUserExist: IAuthDocument = await authService.getUserByUsernameOrEmail(username, email);
+    if (checkIfUserExist) {
       throw new BadRequestError('Invalid credentials');
     }
 
     const authObjectId: ObjectId = new ObjectId();
     const userObjectId: ObjectId = new ObjectId();
     const uId = `${Helpers.generateRandomIntegers(12)}`;
-
     // the reason we are using SignUp.prototype.signupData and not this.signupData is because
     // of how we invoke the create method in the routes method.
     // the scope of the this object is not kept when the method is invoked
@@ -43,7 +41,6 @@ export class SignUp {
       password,
       avatarColor
     });
-    // https://res.cloudinary.com
     const result: UploadApiResponse = (await uploads(avatarImage, `${userObjectId}`, true, true)) as UploadApiResponse;
     if (!result?.public_id) {
       throw new BadRequestError('File upload: Error occurred. Try again.');
@@ -55,18 +52,15 @@ export class SignUp {
     await userCache.saveUserToCache(`${userObjectId}`, uId, userDataForCache);
 
     // Add to database
-    omit(userDataForCache, ['uuId', 'username', 'email', 'avatarColor', 'password']);
-    authQueue.addAuthUserJob('addAuthUserToDB', { value: userDataForCache });
+    authQueue.addAuthUserJob('addAuthUserToDB', { value: authData });
     userQueue.addUserJob('addUserToDB', { value: userDataForCache });
 
-    // JWT
-    const userJwt: string = SignUp.prototype.signupToken(authData, userObjectId);
+    const userJwt: string = SignUp.prototype.signToken(authData, userObjectId);
     req.session = { jwt: userJwt };
-
-    res.status(HTTP_STATUS.CREATED).json({message: 'User created successfully!', user: userDataForCache, token: userJwt});
+    res.status(HTTP_STATUS.CREATED).json({ message: 'User created successfully', user: userDataForCache, token: userJwt });
   }
 
-  private signupToken(data: IAuthDocument, userObjectId: ObjectId): string {
+  private signToken(data: IAuthDocument, userObjectId: ObjectId): string {
     return JWT.sign(
       {
         userId: userObjectId,
@@ -128,5 +122,4 @@ export class SignUp {
       }
     } as unknown as IUserDocument;
   }
-
 }

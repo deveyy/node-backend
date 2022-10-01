@@ -1,8 +1,8 @@
 import express, {Express} from 'express';
-import { bdigitalServer } from './setupServer';
-
 import dataBaseConnection from './setupDatabase';
+
 import { config } from './config';
+import { bdigitalServer } from './setupServer';
 
 class Application {
     public initialize(): void {

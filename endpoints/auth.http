@@ -3,6 +3,13 @@
 
 
 ###
+GET {{baseUrl}}/{{urlPath}}/currentuser
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+
+###
 POST {{baseUrl}}/{{urlPath}}/signin
 Content-Type: application/json
 Accept: application/json
@@ -14,7 +21,13 @@ withCredentials: true
 }
 
 ###
-POST {{baseUrl}}/{{urlPath}}/signup HTTP/1.1
+GET {{baseUrl}}/{{urlPath}}/signout
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+POST {{baseUrl}}/{{urlPath}}/signup
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
