@@ -5,9 +5,13 @@
         "cloudinary",
         "cookier",
         "ddthien",
+        "HGETALL",
+        "HSET",
         "ipaddress",
         "tsbuildinfo",
         "ttsc",
-        "ttypescript"
+        "ttypescript",
+        "ZADD",
+        "ZRANGE"
     ]
 }
