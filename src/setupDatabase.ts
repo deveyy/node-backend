@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import { config } from "./config";
+import mongoose from 'mongoose';
+import { config } from './config';
 import Logger from 'bunyan';
 
 const log: Logger = config.createLogger('setUpDatabase');
@@ -13,7 +13,7 @@ export default () => {
             .catch((error) => {
                 log.error('Error connecting to database', error);
                 return process.exit(1);
-            })
+            });
     };
     connect();
 
