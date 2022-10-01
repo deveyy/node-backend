@@ -7,7 +7,9 @@ const log: Logger = config.createLogger('setUpDatabase');
 
 export default () => {
     const connect = () => {
-        mongoose.connect(`mongodb+srv://${config.MONGO_USERNAME}:${config.MONGO_PASSWORD}@${config.MONGO_URL}`)
+        mongoose
+            // .connect(`mongodb+srv://${config.MONGO_USERNAME}:${config.MONGO_PASSWORD}@${config.MONGO_URL}`)
+            .connect(`${config.MONGO_URL}`)
             .then(() => {
                 log.info('Successfully connected to database');
                 redisConnection.connect();
