@@ -4,11 +4,13 @@
   "description": "bdigital-backend",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon -r tsconfig-paths/register src/app.ts | ./node_modules/.bin/bunyan",
+    "start": "nodemon ./build/src/app.js",
+    "dev": "nodemon -r tsconfig-paths/register src/app.ts",
     "lint:check": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint 'src/**/*.ts' --fix",
     "prettier:check": "prettier --check 'src/**/*.{ts,json}'",
-    "prettier:fix": "prettier --write 'src/**/*.{ts,json}'"
+    "prettier:fix": "prettier --write 'src/**/*.{ts,json}'",
+    "build": "ttsc -p ."
   },
   "keywords": [],
   "author": "ddthien",

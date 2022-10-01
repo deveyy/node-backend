@@ -4,6 +4,8 @@
         "camelcase",
         "cookier",
         "ddthien",
-        "tsbuildinfo"
+        "tsbuildinfo",
+        "ttsc",
+        "ttypescript"
     ]
 }
