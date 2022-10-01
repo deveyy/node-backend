@@ -8,7 +8,7 @@ class Application {
     public initialize(): void {
         // init Config
         this.loadConfig();
-        
+
         //init Database
         dataBaseConnection();
         const app: Express = express();
@@ -17,6 +17,7 @@ class Application {
     }
     private loadConfig(): void {
         config.validateConfig();
+        config.cloudinaryConfig();
     }
 }
 

@@ -26,7 +26,7 @@ export abstract class CustomError extends Error {
             message: this.message,
             status: this.status,
             statusCode: this.statusCode
-        }
+        };
     }
 }
 

@@ -12,7 +12,7 @@ import { createAdapter } from '@socket.io/redis-adapter';
 import 'express-async-errors';
 import applicationRoutes from './routes';
 import { config } from './config';
-import { CustomError, IErrorResponse } from './shared/globals/helpers/error-handler';
+import { CustomError, IErrorResponse } from '@global/helpers/error-handler';
 import Logger from 'bunyan';
 
 const SERVER_PORT = 5000;
@@ -113,7 +113,7 @@ export class bdigitalServer {
     }
 
     private socketIOConnections(io: Server): void {
-      log.info('socketIOConnections');
+      log.info('socketIOConnections', io);
     }
 
 }
