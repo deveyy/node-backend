@@ -113,7 +113,7 @@ export class bdigitalServer {
     }
 
     private socketIOConnections(io: Server): void {
-      log.info('socketIOConnections', io);
+      log.info('socketIOConnections');
     }
 
 }

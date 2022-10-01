@@ -9,6 +9,7 @@ import { authService } from '@service/db/auth.service';
 import { Helpers } from '@global/helpers/helpers';
 import { UploadApiResponse } from 'cloudinary';
 import { uploads } from '@global/helpers/cloudinary-upload';
+import  HTTP_STATUS  from 'http-status-codes';
 
 export class SignUp {
   @joiValidation(signupSchema)
@@ -34,10 +35,13 @@ export class SignUp {
       password,
       avatarColor
     });
+    // https://res.cloudinary.com
     const result: UploadApiResponse = (await uploads(avatarImage, `${userObjectId}`, true, true)) as UploadApiResponse;
     if (!result?.public_id) {
       throw new BadRequestError('File upload: Error occurred. Try again.');
     }
+
+    res.status(HTTP_STATUS.CREATED).json({message: 'User created successfully!', authData});
   }
 
   private signupData(data: ISignUpData): IAuthDocument {
