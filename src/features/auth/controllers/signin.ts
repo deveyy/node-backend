@@ -8,8 +8,16 @@ import { loginSchema } from '@auth/schemas/signin';
 import { IAuthDocument } from '@auth/interfaces/auth.interface';
 import { BadRequestError } from '@global/helpers/error-handler';
 import { userService } from '@service/db/user.service';
-import { IUserDocument } from '@user/interfaces/user.interface';
+import { IResetPasswordParams, IUserDocument } from '@user/interfaces/user.interface';
+
+import { emailQueue } from '@service/queues/email.queue';
+
+// test reset develop local email fake-email
+//import { forgotPasswordTemplate } from '@service/emails/templates/forgot-password/forgot-password-template';
+import moment from 'moment';
+import publicIP from 'ip';
 import { mailTransport } from '@service/emails/mail.transport';
+import { resetPasswordTemplate } from '@service/emails/templates/reset-password/reset-password-template';
 
 export class SignIn {
   @joiValidation(loginSchema)
@@ -35,7 +43,21 @@ export class SignIn {
       },
       config.JWT_TOKEN!
     );
-    await mailTransport.sendEmail('blanca.hahn@ethereal.email', 'Testing development email', 'This is a test email to show development');
+    // test send email
+      await mailTransport.sendEmail('blanca.hahn@ethereal.email', 'Testing development email', 'This is a test email to show development');
+    // test email with password reset
+      const templateParams: IResetPasswordParams = {
+        username: existingUser.username!,
+        email: existingUser.email!,
+        ipaddress: publicIP.address(),
+        date: moment().format('DD/MM/YYYY HH:mm')
+      };
+     // const resetLink = `${config.CLIENT_URL}/reset-password?token=321515348343535`;
+     // const template: string = forgotPasswordTemplate.passwordResetTemplate(existingUser.username!, resetLink);
+     const template: string = resetPasswordTemplate.passwordResetConfirmationTemplate(templateParams);
+      emailQueue.addEmailJob('forgotPasswordEmail', { template, receiverEmail: 'blanca.hahn@ethereal.email', subject: 'Password reset successfully'});
+
+
     req.session = { jwt: userJwt };
     const userDocument: IUserDocument = {
       ...user,
