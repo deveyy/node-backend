@@ -10,6 +10,7 @@
       "HGETALL",
       "HSET",
       "ipaddress",
+      "sendgrid",
       "signin",
       "signout",
       "tsbuildinfo",
