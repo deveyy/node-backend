@@ -7,6 +7,8 @@ import { authService } from '@service/db/auth.service';
 import { Request, Response } from 'express';
 import JWT from 'jsonwebtoken';
 import  HTTP_STATUS  from 'http-status-codes';
+import { userService } from '@service/db/user.service';
+import { IUserDocument } from '@user/interfaces/user.interface';
 
 export class SignIn {
   @joiValidation(loginSchema)
@@ -24,9 +26,11 @@ export class SignIn {
       throw new BadRequestError('Invalid password');
     }
 
+    const user: IUserDocument = await userService.getUserByAuthId(`${existingUser._id}`);
+
     const userJwt: string = JWT.sign(
       {
-        userId: existingUser._id,
+        userId: user._id,
         uId: existingUser.uId,
         email: existingUser.email,
         username: existingUser.username,
