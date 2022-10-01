@@ -5,6 +5,7 @@
       "camelcase",
       "cloudinary",
       "cookier",
+      "currentuser",
       "ddthien",
       "HGETALL",
       "HSET",
