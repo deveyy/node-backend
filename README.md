@@ -16,7 +16,7 @@
 |:-:|
 ![First Image](https://res.cloudinary.com/dyamr9ym3/image/upload/v1662483242/github_readme_images/cloudinary_logo_blue_0720_2x_n8k46z.png)
 
-bdigital App backend server is an interesting real-time social network application. It is developed using [node.js](https://nodejs.org/en/), [typescript](https://www.typescriptlang.org/), [redis](https://redis.io/download/) and [mongodb](https://www.mongodb.com/docs/manual/administration/install-community/).
+bdigital App backend server is an interesting real-time application. It is developed using [node.js](https://nodejs.org/en/), [typescript](https://www.typescriptlang.org/), [redis](https://redis.io/download/) and [mongodb](https://www.mongodb.com/docs/manual/administration/install-community/).
 
 
 ## Features
@@ -48,6 +48,7 @@ bdigital App backend server is an interesting real-time social network applicati
 - Jest
 - Lodash
 - Socket.io
+- Redis-commander
 
 ## Requirements
 
