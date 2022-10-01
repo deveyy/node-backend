@@ -93,5 +93,6 @@ export class UserCache extends BaseCache {
       log.error(error);
       throw new ServerError('Server error. Try again.');
     }
+
   }
 }
