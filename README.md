@@ -1,6 +1,3 @@
-[![CircleCI]()
-[![codecov]()
-
 # bdigital App Backend
 
 |||||
