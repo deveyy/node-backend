@@ -9,6 +9,7 @@
       "ddthien",
       "HGETALL",
       "HSET",
+      "IJWT",
       "ipaddress",
       "lcov",
       "sendgrid",
