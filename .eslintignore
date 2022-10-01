@@ -11,6 +11,8 @@ yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
 
+build
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
@@ -81,9 +83,6 @@ web_modules/
 .env.development.local
 .env.test.local
 .env.production.local
-.env.develop
-.env.staging
-.env.production
 .env.local
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -97,8 +96,6 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
-
-build
 
 # Gatsby files
 .cache/
@@ -136,8 +133,6 @@ build
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-
-package-lock.json
 
 ### Node Patch ###
 # Serverless Webpack directories
