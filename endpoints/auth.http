@@ -2,6 +2,7 @@
 @urlPath = api/v1
 
 
+
 ###
 POST {{baseUrl}}/{{urlPath}}/signin
 Content-Type: application/json
@@ -12,6 +13,12 @@ withCredentials: true
   "username": "ddthien",
   "password": "ddthien"
 }
+
+###
+GET {{baseUrl}}/{{urlPath}}/signout
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
 
 ###
 POST {{baseUrl}}/{{urlPath}}/signup HTTP/1.1
