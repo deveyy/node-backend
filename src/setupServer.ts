@@ -1,4 +1,3 @@
-import {Application, json, urlencoded, Response, Request, NextFunction} from 'express';
 import http from 'http';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -6,14 +5,15 @@ import hpp from 'hpp';
 import compression from 'compression';
 import cookieSession from 'cookie-session';
 import HTTP_STATUS from 'http-status-codes';
-import { Server } from 'socket.io';
-import { createClient } from 'redis';
-import { createAdapter } from '@socket.io/redis-adapter';
 import 'express-async-errors';
 import applicationRoutes from './routes';
+import Logger from 'bunyan';
+import {Application, json, urlencoded, Response, Request, NextFunction} from 'express';
+import { createAdapter } from '@socket.io/redis-adapter';
 import { config } from './config';
 import { CustomError, IErrorResponse } from '@global/helpers/error-handler';
-import Logger from 'bunyan';
+import { createClient } from 'redis';
+import { Server } from 'socket.io';
 
 const SERVER_PORT = 5000;
 const log: Logger = config.createLogger('server');
@@ -114,7 +114,7 @@ export class bdigitalServer {
     }
 
     private socketIOConnections(io: Server): void {
-      log.info('socketIOConnections', io);
+      log.info('socketIOConnections');
     }
 
 }

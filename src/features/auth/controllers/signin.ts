@@ -5,10 +5,10 @@ import { BadRequestError } from '@global/helpers/error-handler';
 import { config } from '@root/config';
 import { authService } from '@service/db/auth.service';
 import { Request, Response } from 'express';
-import JWT from 'jsonwebtoken';
-import  HTTP_STATUS  from 'http-status-codes';
 import { userService } from '@service/db/user.service';
 import { IUserDocument } from '@user/interfaces/user.interface';
+import  HTTP_STATUS  from 'http-status-codes';
+import JWT from 'jsonwebtoken';
 
 export class SignIn {
   @joiValidation(loginSchema)
