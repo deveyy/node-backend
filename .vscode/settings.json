@@ -1,18 +1,19 @@
 {
     "cSpell.words": [
-        "backoff",
-        "bdigital",
-        "camelcase",
-        "cloudinary",
-        "cookier",
-        "ddthien",
-        "HGETALL",
-        "HSET",
-        "ipaddress",
-        "tsbuildinfo",
-        "ttsc",
-        "ttypescript",
-        "ZADD",
-        "ZRANGE"
+      "backoff",
+      "bdigital",
+      "camelcase",
+      "cloudinary",
+      "cookier",
+      "ddthien",
+      "HGETALL",
+      "HSET",
+      "ipaddress",
+      "signin",
+      "tsbuildinfo",
+      "ttsc",
+      "ttypescript",
+      "ZADD",
+      "ZRANGE"
     ]
 }
