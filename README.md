@@ -21,7 +21,6 @@
 
 bdigital App backend server is an interesting real-time social network application. It is developed using [node.js](https://nodejs.org/en/), [typescript](https://www.typescriptlang.org/), [redis](https://redis.io/download/) and [mongodb](https://www.mongodb.com/docs/manual/administration/install-community/).
 
-You can find the repo for the frontend built with react [here](https://github.com/uzochukwueddie/chatty).
 
 ## Features
 1. Signup and signin authentication
