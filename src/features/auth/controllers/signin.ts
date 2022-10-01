@@ -9,6 +9,7 @@ import { IAuthDocument } from '@auth/interfaces/auth.interface';
 import { BadRequestError } from '@global/helpers/error-handler';
 import { userService } from '@service/db/user.service';
 import { IUserDocument } from '@user/interfaces/user.interface';
+import { mailTransport } from '@service/emails/mail.transport';
 
 export class SignIn {
   @joiValidation(loginSchema)
@@ -34,6 +35,7 @@ export class SignIn {
       },
       config.JWT_TOKEN!
     );
+    await mailTransport.sendEmail('blanca.hahn@ethereal.email', 'Testing development email', 'This is a test email to show development');
     req.session = { jwt: userJwt };
     const userDocument: IUserDocument = {
       ...user,
