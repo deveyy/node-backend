@@ -1,0 +1,21 @@
+@baseUrl = http://localhost:5000
+@urlPath = api/v1
+
+
+###
+POST {{baseUrl}}/{{urlPath}}/post
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+# Privacy - Public | Private | Followers
+# Feelings - like | love | wow | happy | sad | angry
+
+{
+  "post": "This is my first post",
+  "bgColor": "#4aa1f3",
+  "privacy": "Public",
+  "gifUrl": "",
+  "profilePicture": "https://res.cloudinary.com/dtnfoho5x/image/upload/v1664607788/6337e628f6f0137f40d5839b",
+  "feelings": "happy"
+}

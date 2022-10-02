@@ -14,6 +14,7 @@ import { config } from './config';
 import { CustomError, IErrorResponse } from '@global/helpers/error-handler';
 import { createClient } from 'redis';
 import { Server } from 'socket.io';
+import { SocketIOPostHandler } from '@socket/post';
 
 const SERVER_PORT = 5000;
 const log: Logger = config.createLogger('server');
@@ -114,7 +115,9 @@ export class bdigitalServer {
     }
 
     private socketIOConnections(io: Server): void {
-      log.info('socketIOConnections');
+      const postSocketHandler: SocketIOPostHandler = new SocketIOPostHandler(io);
+
+      postSocketHandler.listen();
     }
 
 }
