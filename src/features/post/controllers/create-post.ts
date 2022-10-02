@@ -4,7 +4,7 @@ import HTTP_STATUS from 'http-status-codes';
 import { IPostDocument } from '@post/interfaces/post.interface';
 import { PostCache } from '@service/redis/post.cache';
 import { joiValidation } from '@global/decorators/joi-validation.decorators';
-import { postSchema } from '@post/schemas/post.schemas';
+import { postSchema } from '@post/schemas/post';
 import { socketIOPostObject } from '@socket/post';
 import { postQueue } from '@service/queues/post.queue';
 
@@ -21,10 +21,10 @@ export class Create {
       username: req.currentUser!.username,
       email: req.currentUser!.email,
       avatarColor: req.currentUser!.avatarColor,
-      profilePicture,
       post,
       bgColor,
       feelings,
+      profilePicture,
       privacy,
       gifUrl,
       commentsCount: 0,
