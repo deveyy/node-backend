@@ -22,3 +22,27 @@ DELETE {{baseUrl}}/{{urlPath}}/post/reaction/63396995ffea3396bd0b9285/happy/{"li
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
+
+
+###
+
+GET {{baseUrl}}/{{urlPath}}/post/reactions/633909b4f987ae6d75cb2ff3
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+
+###
+
+GET {{baseUrl}}/{{urlPath}}/post/single/reaction/username/ddthien/633909b4f987ae6d75cb2ff3
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+
+###
+
+GET {{baseUrl}}/{{urlPath}}/post/reactions/username/ddthien
+Content-Type: application/json
+Accept: application/json
+withCredentials: true

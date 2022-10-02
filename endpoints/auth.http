@@ -49,7 +49,7 @@ withCredentials: true
 }
 
 ###
-POST {{baseUrl}}/{{urlPath}}/reset-password/d6b4bdcaca3f93fb5a322ccba5cd3768f76ca5ea
+POST {{baseUrl}}/{{urlPath}}/reset-password/63399aa1c5fcc2154ba26c47
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
