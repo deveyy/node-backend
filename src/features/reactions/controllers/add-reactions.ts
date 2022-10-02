@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import { ObjectId } from 'mongodb';
 import HTTP_STATUS from 'http-status-codes';
 import { addReactionSchema } from '@reaction/schemas/reaction';
-import { IReactionDocument, IReactionJob } from '@reaction/interfaces/reaction.interface';
+import { IReactionDocument } from '@reaction/interfaces/reaction.interface';
 
 
 const reactionCache: ReactionCache = new ReactionCache();
@@ -24,7 +24,6 @@ export class Add {
     } as IReactionDocument;
 
     await reactionCache.savePostReactionToCache(postId, reactionObject, postReactions, type, previousReaction);
-
 
     res.status(HTTP_STATUS.OK).json({ message: 'Reaction added successfully' });
   }
