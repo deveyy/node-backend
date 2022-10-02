@@ -19,3 +19,20 @@ withCredentials: true
   "profilePicture": "https://res.cloudinary.com/dtnfoho5x/image/upload/v1664607788/6337e628f6f0137f40d5839b",
   "feelings": "happy"
 }
+
+
+###
+POST {{baseUrl}}/{{urlPath}}/post/image/post
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+  "post": "",
+  "bgColor": "",
+  "privacy": "",
+  "gifUrl": "",
+  "profilePicture": "",
+  "feelings": "",
+  "image": ""
+}
