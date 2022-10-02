@@ -17,6 +17,7 @@ export interface IReactions {
   like: number;
   love: number;
   haha: number;
+  happy: number;
   wow: number;
   sad: number;
   angry: number;
