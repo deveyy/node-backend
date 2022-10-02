@@ -6,6 +6,7 @@ import { PostCache } from '@service/redis/post.cache';
 import { joiValidation } from '@global/decorators/joi-validation.decorators';
 import { postSchema } from '@post/schemas/post.schemas';
 import { socketIOPostObject } from '@socket/post';
+import { postQueue } from '@service/queues/post.queue';
 
 const postCache: PostCache = new PostCache();
 
@@ -40,6 +41,7 @@ export class Create {
       uId: `${req.currentUser!.uId}`,
       createdPost
     });
+    postQueue.addPostJob('addPostToDB', { key: req.currentUser!.userId, value: createdPost });
     res.status(HTTP_STATUS.CREATED).json({ message: 'Post created successfully' });
   }
 }
