@@ -3,6 +3,22 @@
 
 
 ###
+PUT {{baseUrl}}/{{urlPath}}/post/633909b4f987ae6d75cb2ff3
+Content-Type: application/json
+Accept: application/json
+withCredentials: true,
+
+{
+  "post": "this is post update",
+  "bgColor": "",
+  "privacy": "",
+  "gifUrl": "",
+  "profilePicture": "https://res.cloudinary.com/dtnfoho5x/image/upload/v1664607788/6337e628f6f0137f40d5839b",
+  "feelings": "haha"
+}
+
+
+###
 DELETE {{baseUrl}}/{{urlPath}}/post/633907ba4153f2489a3ed516
 Content-Type: application/json
 Accept: application/json
