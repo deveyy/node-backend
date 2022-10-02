@@ -18,7 +18,6 @@
     "space-before-function-paren": [0, {"anonymous": "always", "named": "always"}],
     "camelcase": 0,
     "no-return-assign": 0,
-    "no-unused-vars": 0,
     "quotes": ["error", "single"],
     "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-namespace": "off",

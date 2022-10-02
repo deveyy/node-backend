@@ -25,16 +25,13 @@ describe('SignUp', () => {
   });
 
   it('should throw an error if username is not available', () => {
-    const req: Request = authMockRequest(
-      {},
-      {
-        username: 'ddthien',
-        email: 'ddthien@bdigital.vn',
-        password: 'ddthien',
-        avatarColor: 'red',
-        avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
-      }
-    ) as Request;
+    const req: Request = authMockRequest({}, {
+      username: '',
+      email: 'manny@test.com',
+      password: 'qwerty',
+      avatarColor: 'red',
+      avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
+    }) as Request;
     const res: Response = authMockResponse();
 
     SignUp.prototype.create(req, res).catch((error: CustomError) => {
@@ -48,8 +45,8 @@ describe('SignUp', () => {
       {},
       {
         username: 'ma',
-        email: 'ddthien@bdigital.vn',
-        password: 'ddthien',
+        email: 'manny@test.com',
+        password: 'qwerty',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
       }
@@ -66,8 +63,8 @@ describe('SignUp', () => {
       {},
       {
         username: 'mathematics',
-        email: 'ddthien@bdigital.vn',
-        password: 'ddthien',
+        email: 'manny@test.com',
+        password: 'qwerty',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
       }
@@ -83,7 +80,7 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Ddthien',
+        username: 'Manny',
         email: 'not valid',
         password: 'qwerty',
         avatarColor: 'red',
@@ -101,7 +98,7 @@ describe('SignUp', () => {
   it('should throw an error if email is not available', () => {
     const req: Request = authMockRequest(
       {},
-      { username: 'Ddthien', email: '', password: 'qwerty', avatarColor: 'red', avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==' }
+      { username: 'Manny', email: '', password: 'qwerty', avatarColor: 'red', avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==' }
     ) as Request;
     const res: Response = authMockResponse();
     SignUp.prototype.create(req, res).catch((error: CustomError) => {
@@ -114,8 +111,8 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Ddthien',
-        email: 'ddthien@bdigital.vn',
+        username: 'Manny',
+        email: 'manny@test.com',
         password: '',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
@@ -132,8 +129,8 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Ddthien',
-        email: 'ddthien@bdigital.vn',
+        username: 'Manny',
+        email: 'manny@test.com',
         password: 'ma',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
@@ -150,8 +147,8 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Ddthien',
-        email: 'ddthien@bdigital.vn',
+        username: 'Manny',
+        email: 'manny@test.com',
         password: 'mathematics1',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
@@ -168,8 +165,8 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Ddthien',
-        email: 'ddthien@bdigital.vn',
+        username: 'Manny',
+        email: 'manny@test.com',
         password: 'qwerty',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
@@ -188,8 +185,8 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Ddthien',
-        email: 'ddthien@bdigital.vn',
+        username: 'Manny',
+        email: 'manny@test.com',
         password: 'qwerty',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='

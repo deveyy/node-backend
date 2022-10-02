@@ -24,6 +24,7 @@ class MailTransport {
     }
   }
 
+
   private async developmentEmailSender(receiverEmail: string, subject: string, body: string): Promise<void> {
     const transporter: Mail = nodemailer.createTransport({
       host: 'smtp.ethereal.email',
@@ -31,12 +32,12 @@ class MailTransport {
       secure: false,
       auth: {
         user: config.SENDER_EMAIL!,
-        pass: config.SENDER_EMAIL_PASSWORD!
-      }
+        pass: config.SENDER_EMAIL_PASSWORD!,
+      },
     });
 
     const mailOptions: IMailOptions = {
-      from: `Bdigital  <${config.SENDER_EMAIL!}>`,
+      from: `bdigital <${config.SENDER_EMAIL!}>`,
       to: receiverEmail,
       subject,
       html: body
@@ -53,7 +54,7 @@ class MailTransport {
 
   private async productionEmailSender(receiverEmail: string, subject: string, body: string): Promise<void> {
     const mailOptions: IMailOptions = {
-      from: `Bdigital email <${config.SENDER_EMAIL!}>`,
+      from: `bdigital App <${config.SENDER_EMAIL!}>`,
       to: receiverEmail,
       subject,
       html: body

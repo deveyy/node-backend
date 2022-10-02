@@ -1,6 +1,7 @@
 import { Document } from 'mongoose';
 import { ObjectId } from 'mongodb';
 import { IUserDocument } from '@user/interfaces/user.interface';
+
 declare global {
   namespace Express {
     interface Request {

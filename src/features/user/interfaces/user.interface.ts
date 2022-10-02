@@ -54,14 +54,6 @@ export interface ISocialLinks {
   youtube: string;
 }
 
-export interface ISearchUser {
-  _id: string;
-  profilePicture: string;
-  username: string;
-  email: string;
-  avatarColor: string;
-}
-
 export interface ISocketData {
   blockedUser: string;
   blockedBy: string;

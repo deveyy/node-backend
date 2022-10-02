@@ -1,4 +1,3 @@
-
 import { Password } from '@auth/controllers/password';
 import { SignIn } from '@auth/controllers/signin';
 import { SignOut } from '@auth/controllers/signout';
@@ -23,8 +22,9 @@ class AuthRoutes {
 
   public signoutRoute(): Router {
     this.router.get('/signout', SignOut.prototype.update);
+
     return this.router;
   }
-};
+}
 
 export const authRoutes: AuthRoutes = new AuthRoutes();
