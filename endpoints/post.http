@@ -36,3 +36,17 @@ withCredentials: true
   "feelings": "",
   "image": ""
 }
+
+###
+# GET {{baseUrl}}/{{urlPath}}/post/all/<page-number>
+GET {{baseUrl}}/{{urlPath}}/post/all/1
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+###
+# GET {{baseUrl}}/{{urlPath}}/post/images/<page-number>
+GET {{baseUrl}}/{{urlPath}}/post/images/1
+Content-Type: application/json
+Accept: application/json
+withCredentials: true

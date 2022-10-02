@@ -107,7 +107,7 @@ export class PostCache extends BaseCache {
       for (const value of reply) {
         multi.HGETALL(`posts:${value}`);
       }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
       const replies: PostCacheMultiType = await multi.exec() as PostCacheMultiType;
       const postReplies: IPostDocument[] = [];
       for (const post of replies as IPostDocument[]) {
