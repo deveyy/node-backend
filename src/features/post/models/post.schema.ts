@@ -18,7 +18,7 @@ const postSchema: Schema = new Schema({
   reactions: {
     like: { type: Number, default: 0 },
     love: { type: Number, default: 0 },
-    haha: { type: Number, default: 0 },
+    happy: { type: Number, default: 0 },
     wow: { type: Number, default: 0 },
     sad: { type: Number, default: 0 },
     angry: { type: Number, default: 0 }
