@@ -10,6 +10,7 @@
       "ddthien",
       "haha",
       "HGETALL",
+      "HMGET",
       "HSET",
       "IJWT",
       "ipaddress",
