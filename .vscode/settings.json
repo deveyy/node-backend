@@ -24,6 +24,7 @@
       "ZADD",
       "ZCARD",
       "ZCOUNT",
-      "ZRANGE"
+      "ZRANGE",
+      "ZREM"
     ]
 }

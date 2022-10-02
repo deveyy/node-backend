@@ -1,16 +1,15 @@
-import { config } from '@root/config';
-import  Logger  from 'bunyan';
 import { BaseCache } from '@service/redis/base.cache';
-import { IPostDocument, ISavePostToCache } from '@post/interfaces/post.interface';
+import Logger from 'bunyan';
+import { config } from '@root/config';
 import { ServerError } from '@global/helpers/error-handler';
+import { ISavePostToCache, IPostDocument } from '@post/interfaces/post.interface';
 import { Helpers } from '@global/helpers/helpers';
-import { IReactions } from '@reaction/interfaces/reaction.interface';
 import { RedisCommandRawReply } from '@redis/client/dist/lib/commands';
+import { IReactions } from '@reaction/interfaces/reaction.interface';
 
 const log: Logger = config.createLogger('postCache');
 
 export type PostCacheMultiType = string | number | Buffer | RedisCommandRawReply[] | IPostDocument | IPostDocument[];
-
 
 export class PostCache extends BaseCache {
   constructor() {
@@ -19,7 +18,6 @@ export class PostCache extends BaseCache {
 
   public async savePostToCache(data: ISavePostToCache): Promise<void> {
     const { key, currentUserId, uId, createdPost } = data;
-
     const {
       _id,
       userId,
@@ -82,6 +80,7 @@ export class PostCache extends BaseCache {
       if (!this.client.isOpen) {
         await this.client.connect();
       }
+
       const postCount: string[] = await this.client.HMGET(`users:${currentUserId}`, 'postsCount');
       const multi: ReturnType<typeof this.client.multi> = this.client.multi();
       await this.client.ZADD('post', { score: parseInt(uId, 10), value: `${key}` });
@@ -89,7 +88,6 @@ export class PostCache extends BaseCache {
       const count: number = parseInt(postCount[0], 10) + 1;
       multi.HSET(`users:${currentUserId}`, ['postsCount', count]);
       multi.exec();
-
     } catch (error) {
       log.error(error);
       throw new ServerError('Server error. Try again.');
@@ -107,8 +105,7 @@ export class PostCache extends BaseCache {
       for (const value of reply) {
         multi.HGETALL(`posts:${value}`);
       }
-
-      const replies: PostCacheMultiType = await multi.exec() as PostCacheMultiType;
+      const replies: PostCacheMultiType = (await multi.exec()) as PostCacheMultiType;
       const postReplies: IPostDocument[] = [];
       for (const post of replies as IPostDocument[]) {
         post.commentsCount = Helpers.parseJson(`${post.commentsCount}`) as number;
@@ -120,7 +117,7 @@ export class PostCache extends BaseCache {
       return postReplies;
     } catch (error) {
       log.error(error);
-      throw new ServerError('Server error. Try again or contact admin');
+      throw new ServerError('Server error. Try again.');
     }
   }
 
@@ -203,4 +200,25 @@ export class PostCache extends BaseCache {
       throw new ServerError('Server error. Try again.');
     }
   }
+
+  public async deletePostFromCache(key: string, currentUserId: string): Promise<void> {
+    try {
+      if (!this.client.isOpen) {
+        await this.client.connect();
+      }
+      const postCount: string[] = await this.client.HMGET(`users:${currentUserId}`, 'postsCount');
+      const multi: ReturnType<typeof this.client.multi> = this.client.multi();
+      multi.ZREM('post', `${key}`);
+      multi.DEL(`posts:${key}`);
+      multi.DEL(`comments:${key}`);
+      multi.DEL(`reactions:${key}`);
+      const count: number = parseInt(postCount[0], 10) - 1;
+      multi.HSET(`users:${currentUserId}`, ['postsCount', count]);
+      await multi.exec();
+    } catch (error) {
+      log.error(error);
+      throw new ServerError('Server error. Try again.');
+    }
+  }
+
 }

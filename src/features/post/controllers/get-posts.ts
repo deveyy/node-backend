@@ -8,6 +8,7 @@ const postCache: PostCache = new PostCache();
 const PAGE_SIZE = 10;
 
 export class Get {
+
   public async posts(req: Request, res: Response): Promise<void> {
     const { page } = req.params;
     const skip: number = (parseInt(page) - 1) * PAGE_SIZE;
