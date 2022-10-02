@@ -16,7 +16,7 @@ export interface IReactionDocument extends Document {
 export interface IReactions {
   like: number;
   love: number;
-  happy: number;
+  haha: number;
   wow: number;
   sad: number;
   angry: number;
