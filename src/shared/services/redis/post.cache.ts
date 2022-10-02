@@ -80,7 +80,6 @@ export class PostCache extends BaseCache {
       if (!this.client.isOpen) {
         await this.client.connect();
       }
-
       const postCount: string[] = await this.client.HMGET(`users:${currentUserId}`, 'postsCount');
       const multi: ReturnType<typeof this.client.multi> = this.client.multi();
       await this.client.ZADD('post', { score: parseInt(uId, 10), value: `${key}` });
@@ -257,5 +256,4 @@ export class PostCache extends BaseCache {
       throw new ServerError('Server error. Try again.');
     }
   }
-
 }
