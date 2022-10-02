@@ -21,6 +21,7 @@ class PostRoutes {
     this.router.post('/post/image/post', authMiddleware.checkAuthentication, Create.prototype.postWithImage);
 
     this.router.put('/post/:postId', authMiddleware.checkAuthentication, Update.prototype.posts);
+    this.router.put('/post/image/:postId', authMiddleware.checkAuthentication, Update.prototype.postWithImage);
 
     this.router.delete('/post/:postId', authMiddleware.checkAuthentication, Delete.prototype.post);
 
