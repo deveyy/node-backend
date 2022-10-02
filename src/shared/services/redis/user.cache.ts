@@ -1,10 +1,9 @@
+import { BaseCache } from '@service/redis/base.cache';
+import { IUserDocument } from '@user/interfaces/user.interface';
 import Logger from 'bunyan';
 import { config } from '@root/config';
 import { ServerError } from '@global/helpers/error-handler';
 import { Helpers } from '@global/helpers/helpers';
-import { IUserDocument } from '@user/interfaces/user.interface';
-import { BaseCache } from '@service/redis/base.cache';
-
 
 const log: Logger = config.createLogger('userCache');
 
@@ -94,7 +93,6 @@ export class UserCache extends BaseCache {
       log.error(error);
       throw new ServerError('Server error. Try again.');
     }
-
   }
 
   public async getUserFromCache(userId: string): Promise<IUserDocument | null> {
@@ -112,13 +110,6 @@ export class UserCache extends BaseCache {
       response.social = Helpers.parseJson(`${response.social}`);
       response.followersCount = Helpers.parseJson(`${response.followersCount}`);
       response.followingCount = Helpers.parseJson(`${response.followingCount}`);
-      response.bgImageId = Helpers.parseJson(`${response.bgImageId}`);
-      response.bgImageVersion = Helpers.parseJson(`${response.bgImageVersion}`);
-      response.profilePicture = Helpers.parseJson(`${response.profilePicture}`);
-      response.work = Helpers.parseJson(`${response.work}`);
-      response.school = Helpers.parseJson(`${response.school}`);
-      response.location = Helpers.parseJson(`${response.location}`);
-      response.quote = Helpers.parseJson(`${response.quote}`);
 
       return response;
     } catch (error) {

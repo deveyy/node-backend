@@ -1,9 +1,9 @@
+import express, { Router } from 'express';
 import { authMiddleware } from '@global/helpers/auth-middleware';
 import { Create } from '@post/controllers/create-post';
-import { Delete } from '@post/controllers/delete-post';
 import { Get } from '@post/controllers/get-posts';
+import { Delete } from '@post/controllers/delete-post';
 import { Update } from '@post/controllers/update-post';
-import express, { Router } from 'express';
 
 class PostRoutes {
   private router: Router;
@@ -13,6 +13,8 @@ class PostRoutes {
   }
 
   public routes(): Router {
+    this.router.get('/post/all/:page', authMiddleware.checkAuthentication, Get.prototype.posts);
+    this.router.get('/post/images/:page', authMiddleware.checkAuthentication, Get.prototype.postsWithImages);
 
     this.router.get('/post/all/:page', authMiddleware.checkAuthentication, Get.prototype.posts);
     this.router.get('/post/images/:page', authMiddleware.checkAuthentication, Get.prototype.postsWithImages);

@@ -104,7 +104,6 @@ aliases:
             }
           ]
         }
-
 jobs:
   build:
     executor: app-executor
@@ -289,7 +288,6 @@ jobs:
                 }
               ]
             }
-
   terraform-destroy:
     executor: terraform-executor
     steps:
@@ -302,7 +300,6 @@ jobs:
             terraform init
             terraform workspace select ${CIRCLE_BRANCH} || terraform workspace new ${CIRCLE_BRANCH}
             terraform destroy -auto-approve
-
 workflows:
   build_and_deploy:
     jobs:

@@ -95,40 +95,6 @@ export const existingUserTwo = {
   createdAt: new Date()
 } as unknown as IUserDocument;
 
-export const mergedAuthAndUserData = {
-  notifications: {
-    messages: false,
-    reactions: true,
-    comments: true,
-    follows: false
-  },
-  social: {
-    facebook: '',
-    instagram: '',
-    twitter: '',
-    youtube: ''
-  },
-  blocked: [],
-  blockedBy: [],
-  followersCount: 1,
-  followingCount: 2,
-  postsCount: 2,
-  bgImageVersion: '',
-  bgImageId: '',
-  profilePicture: 'http://place-hold.it/500x500',
-  _id: '60263f14648fed5246e322d8',
-  authId: '60263f14648fed5246e322d3',
-  uId: '1621613119252066',
-  username: 'ddthien',
-  email: 'ddthien@gmail.com',
-  avatarColor: '#9c27b0',
-  work: 'KickChat Inc.',
-  school: 'University of Benin',
-  location: 'Dusseldorf, Germany',
-  quote: 'Sky is my limit',
-  createdAt: '2022-08-31T07:42:24.451Z'
-} as unknown as IUserDocument;
-
 export const searchedUserMock = {
   profilePicture: 'http://place-hold.it/500x500',
   _id: '60263f14648fed5246e322d5',

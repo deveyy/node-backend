@@ -1,6 +1,6 @@
 import { IPostJobData } from '@post/interfaces/post.interface';
-import { postWorker } from '@root/shared/workers/post.worker';
 import { BaseQueue } from '@service/queues/base.queue';
+import { postWorker } from '@worker/post.worker';
 
 class PostQueue extends BaseQueue {
   constructor() {

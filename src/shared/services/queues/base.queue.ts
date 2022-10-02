@@ -1,22 +1,15 @@
 import Queue, { Job } from 'bull';
 import Logger from 'bunyan';
-
-
 import { createBullBoard } from '@bull-board/api';
 import { BullAdapter } from '@bull-board/api/bullAdapter';
 import { ExpressAdapter } from '@bull-board/express';
-
 import { config } from '@root/config';
 import { IAuthJob } from '@auth/interfaces/auth.interface';
-import { IEmailJob, IUserJob } from '@user/interfaces/user.interface';
+import { IEmailJob } from '@user/interfaces/user.interface';
 import { IPostJobData } from '@post/interfaces/post.interface';
+import { IReactionJob } from '@reaction/interfaces/reaction.interface';
 
-
-type IBaseJobData =
-  | IAuthJob
-  | IUserJob
-  | IEmailJob
-  | IPostJobData
+type IBaseJobData = IAuthJob | IEmailJob | IPostJobData | IReactionJob;
 
 let bullAdapters: BullAdapter[] = [];
 export let serverAdapter: ExpressAdapter;
@@ -50,7 +43,6 @@ export abstract class BaseQueue {
     this.queue.on('global:stalled', (jobId: string) => {
       this.log.info(`Job ${jobId} is stalled`);
     });
-
   }
 
   protected addJob(name: string, data: IBaseJobData): void {

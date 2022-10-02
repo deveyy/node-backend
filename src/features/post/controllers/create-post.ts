@@ -1,10 +1,10 @@
+import { joiValidation } from '@global/decorators/joi-validation.decorators';
+import { postSchema, postWithImageSchema } from '@post/schemas/post.schemes';
 import { Request, Response } from 'express';
 import { ObjectId } from 'mongodb';
 import HTTP_STATUS from 'http-status-codes';
 import { IPostDocument } from '@post/interfaces/post.interface';
 import { PostCache } from '@service/redis/post.cache';
-import { joiValidation } from '@global/decorators/joi-validation.decorators';
-import { postSchema, postWithImageSchema } from '@post/schemas/post';
 import { socketIOPostObject } from '@socket/post';
 import { postQueue } from '@service/queues/post.queue';
 import { UploadApiResponse } from 'cloudinary';
@@ -24,10 +24,10 @@ export class Create {
       username: req.currentUser!.username,
       email: req.currentUser!.email,
       avatarColor: req.currentUser!.avatarColor,
+      profilePicture,
       post,
       bgColor,
       feelings,
-      profilePicture,
       privacy,
       gifUrl,
       commentsCount: 0,
@@ -36,7 +36,6 @@ export class Create {
       createdAt: new Date(),
       reactions: { like: 0, love: 0, happy: 0, sad: 0, wow: 0, angry: 0 }
     } as IPostDocument;
-
     socketIOPostObject.emit('add post', createdPost);
     await postCache.savePostToCache({
       key: postObjectId,
@@ -47,7 +46,6 @@ export class Create {
     postQueue.addPostJob('addPostToDB', { key: req.currentUser!.userId, value: createdPost });
     res.status(HTTP_STATUS.CREATED).json({ message: 'Post created successfully' });
   }
-
 
   @joiValidation(postWithImageSchema)
   public async postWithImage(req: Request, res: Response): Promise<void> {
@@ -86,8 +84,7 @@ export class Create {
     });
     postQueue.addPostJob('addPostToDB', { key: req.currentUser!.userId, value: createdPost });
     // call image queue to add image to mongodb database
+
     res.status(HTTP_STATUS.CREATED).json({ message: 'Post created with image successfully' });
   }
 }
-
-

@@ -1,4 +1,4 @@
-import cloudinary, {UploadApiResponse, UploadApiErrorResponse} from 'cloudinary';
+import cloudinary, { UploadApiResponse, UploadApiErrorResponse } from 'cloudinary';
 
 export function uploads(
   file: string,

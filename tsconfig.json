@@ -24,20 +24,15 @@
       { "transform": "typescript-transform-paths", "afterDeclarations": true },
     ],
     "paths": {
-      "@global/*": ["src/shared/globals/*"],
       "@auth/*": ["src/features/auth/*"],
       "@user/*": ["src/features/user/*"],
       "@post/*": ["src/features/post/*"],
       "@reaction/*": ["src/features/reactions/*"],
-      "@comment/*": ["src/features/comments/*"],
-      "@follower/*": ["src/features/followers/*"],
-      "@notification/*": ["src/features/notifications/*"],
-      "@image/*": ["src/features/images/*"],
-      "@chat/*": ["src/features/chat/*"],
+      "@global/*": ["src/shared/globals/*"],
       "@service/*": ["src/shared/services/*"],
       "@socket/*": ["src/shared/sockets/*"],
-      "@root/*": ["src/*"],
       "@worker/*": ["src/shared/workers/*"],
+      "@root/*": ["src/*"]
     }
   }
 }

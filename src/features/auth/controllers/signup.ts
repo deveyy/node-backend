@@ -10,6 +10,7 @@ import { uploads } from '@global/helpers/cloudinary-upload';
 import HTTP_STATUS from 'http-status-codes';
 import { IUserDocument } from '@user/interfaces/user.interface';
 import { UserCache } from '@service/redis/user.cache';
+import { omit } from 'lodash';
 import JWT from 'jsonwebtoken';
 import { authQueue } from '@service/queues/auth.queue';
 import { userQueue } from '@service/queues/user.queue';
@@ -30,9 +31,6 @@ export class SignUp {
     const authObjectId: ObjectId = new ObjectId();
     const userObjectId: ObjectId = new ObjectId();
     const uId = `${Helpers.generateRandomIntegers(12)}`;
-    // the reason we are using SignUp.prototype.signupData and not this.signupData is because
-    // of how we invoke the create method in the routes method.
-    // the scope of the this object is not kept when the method is invoked
     const authData: IAuthDocument = SignUp.prototype.signupData({
       _id: authObjectId,
       uId,
@@ -52,11 +50,13 @@ export class SignUp {
     await userCache.saveUserToCache(`${userObjectId}`, uId, userDataForCache);
 
     // Add to database
-    authQueue.addAuthUserJob('addAuthUserToDB', { value: authData });
+    omit(userDataForCache, ['uId', 'username', 'email', 'avatarColor', 'password']);
+    authQueue.addAuthUserJob('addAuthUserToDB', { value: userDataForCache });
     userQueue.addUserJob('addUserToDB', { value: userDataForCache });
 
     const userJwt: string = SignUp.prototype.signToken(authData, userObjectId);
     req.session = { jwt: userJwt };
+
     res.status(HTTP_STATUS.CREATED).json({ message: 'User created successfully', user: userDataForCache, token: userJwt });
   }
 
