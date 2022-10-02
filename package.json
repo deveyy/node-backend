@@ -10,7 +10,7 @@
     "lint:fix": "eslint 'src/**/*.ts' --fix",
     "prettier:check": "prettier --check 'src/**/*.{ts,json}'",
     "prettier:fix": "prettier --write 'src/**/*.{ts,json}'",
-    "test": "jest --coverage=true -w=1 --forceExit --detectOpenHandles --watchAll=false",
+    "test": "jest --coverage=true -w=1 --forceExit --detectOpenHandles --watchAll=true",
     "build": "ttsc -p ."
   },
   "keywords": [],
@@ -65,6 +65,7 @@
     "@types/jsonwebtoken": "^8.5.9",
     "@types/lodash": "^4.14.186",
     "@types/nodemailer": "^6.4.6",
+    "@types/redis-info": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
     "eslint": "^8.24.0",
