@@ -22,6 +22,7 @@
       "ttsc",
       "ttypescript",
       "ZADD",
+      "ZCOUNT",
       "ZRANGE"
     ]
 }
