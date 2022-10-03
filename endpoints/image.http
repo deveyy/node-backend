@@ -33,13 +33,13 @@ withCredentials: true
 }
 
 ###
-DELETE {{baseUrl}}/{{urlPath}}/images/<imageId>
+DELETE {{baseUrl}}/{{urlPath}}/images/633ae3fcaa4f05bce491a157
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
 
 ###
-DELETE {{baseUrl}}/{{urlPath}}/images/background/<bgImageId>
+DELETE {{baseUrl}}/{{urlPath}}/images/background/63399aa1c5fcc2154ba26c47
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
