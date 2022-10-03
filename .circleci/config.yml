@@ -42,7 +42,7 @@ aliases:
       name: Zip project
       command: |
           rm -rf node_modules
-          zip chatapp.zip -r .
+          zip Bdigital.zip -r .
           echo "Zip successful"
   - &notify-on-fail
     slack/notify:
@@ -145,7 +145,7 @@ jobs:
       - *restore-cache
       - run:
           name: Start redis server
-          command: docker run --name chatapp-redis -p 6379:6379 -d redis
+          command: docker run --name Bdigital-redis -p 6379:6379 -d redis
           background: true
       - run:
           name: Run unit test
@@ -201,7 +201,7 @@ jobs:
       - run:
           name: Upload project to S3
           command: |
-            aws --region eu-central-1 s3 cp chatapp.zip s3://<variable-prefix>-${CIRCLE_BRANCH}-app
+            aws --region eu-central-1 s3 cp Bdigital.zip s3://<variable-prefix>-${CIRCLE_BRANCH}-app
       - *notify-on-fail
 
   push-to-aws-code-deploy:
@@ -221,7 +221,7 @@ jobs:
                     --deployment-config-name CodeDeployDefault.AllAtOnce \
                     --deployment-group-name <variable-prefix>-${CIRCLE_BRANCH}-group \
                     --file-exists-behavior "OVERWRITE" \
-                    --s3-location bucket=<variable-prefix>-${CIRCLE_BRANCH}-app,bundleType=zip,key=chatapp.zip
+                    --s3-location bucket=<variable-prefix>-${CIRCLE_BRANCH}-app,bundleType=zip,key=Bdigital.zip
             fi
       - *notify-on-fail
 
