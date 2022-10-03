@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "akamud.vscode-theme-onedark",
+    "esbenp.prettier-vscode",
+    "alefragnani.Bookmarks",
+    "dbaeumer.vscode-eslint",
+    "dsznajder.es7-react-js-snippets",
+    "eamodio.gitlens",
+    "EditorConfig.EditorConfig",
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+    "PKief.material-icon-theme",
+    "streetsidesoftware.code-spell-checker",
+    "ritwickdey.LiveServer",
+    "riazxrazor.html-to-jsx"
+  ]
+}
