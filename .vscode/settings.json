@@ -29,6 +29,7 @@
       "ttsc",
       "ttypescript",
       "unfollow",
+      "Unfollowed",
       "ZADD",
       "ZCARD",
       "ZCOUNT",
