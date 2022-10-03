@@ -14,8 +14,11 @@ import { socketIOChatObject } from '@socket/chat';
 import { INotificationTemplate } from '@notification/interfaces/notification.interface';
 import { notificationTemplate } from '@service/emails/templates/notifications/notification-template';
 import { emailQueue } from '@service/queues/email.queue';
+import { MessageCache } from '@service/redis/message.cache';
 
 const userCache: UserCache = new UserCache();
+const messageCache: MessageCache = new MessageCache();
+
 const CLOUDY_NAME = process.env.CLOUD_NAME;
 
 export class Add {
@@ -80,7 +83,9 @@ export class Add {
     }
 
     // 1- add sender to chat list in cache
+    await messageCache.addChatListToCache(`${req.currentUser!.userId}`, `${receiverId}`, `${conversationObjectId}`);
     // 2- add receiver to chat list in cache
+    await messageCache.addChatListToCache(`${receiverId}`, `${req.currentUser!.userId}`, `${conversationObjectId}`);
     // 3- add message data to cache
     // 4- add message to chat queue
 
