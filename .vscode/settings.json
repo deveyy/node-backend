@@ -11,6 +11,7 @@
       "ddthien",
       "followee",
       "haha",
+      "HGET",
       "HGETALL",
       "HINCRBY",
       "HMGET",
