@@ -12,6 +12,7 @@
       "followee",
       "haha",
       "HGETALL",
+      "HINCRBY",
       "HMGET",
       "HSET",
       "IJWT",
