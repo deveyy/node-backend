@@ -28,6 +28,7 @@
       "tsbuildinfo",
       "ttsc",
       "ttypescript",
+      "unfollow",
       "ZADD",
       "ZCARD",
       "ZCOUNT",
