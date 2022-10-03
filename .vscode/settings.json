@@ -24,6 +24,7 @@
       "LPUSH",
       "LREM",
       "paren",
+      "RPUSH",
       "sendgrid",
       "signin",
       "signout",

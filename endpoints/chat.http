@@ -8,14 +8,14 @@ Accept: application/json
 withCredentials: true
 
 {
-  "conversationId": "",
+  "conversationId": "633af29320d42075d9f9b553",
   "receiverId": "633acb89c9325e21af77cb18",
   "receiverUsername": "ddthien",
   "receiverAvatarColor": "red",
   "receiverProfilePicture": "https://res.cloudinary.com/dtnfoho5x/image/upload/v1664607788/6337e628f6f0137f40d5839b",
   "body": "Today is an awesome day",
   "gifUrl": "",
-  "isRead": false,
+  "isRead": true,
   "selectedImage": ""
 }
 
