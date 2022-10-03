@@ -17,6 +17,7 @@ import { CustomError, IErrorResponse } from '@global/helpers/error-handler';
 import { SocketIOPostHandler } from '@socket/post';
 import { SocketIOFollowerHandler } from '@socket/follower';
 import { SocketIOUserHandler } from '@socket/user';
+import { SocketIONotificationHandler } from '@socket/notification';
 
 const SERVER_PORT = 5000;
 const log: Logger = config.createLogger('server');
@@ -107,6 +108,7 @@ export class BdigitalServer {
   }
 
   private startHttpServer(httpServer: http.Server): void {
+    log.info(`Worker with process id of ${process.pid} has started...`);
     log.info(`Server has started with process ${process.pid}`);
     httpServer.listen(SERVER_PORT, () => {
       log.info(`Server running on port ${SERVER_PORT}`);
@@ -117,9 +119,12 @@ export class BdigitalServer {
     const postSocketHandler: SocketIOPostHandler = new SocketIOPostHandler(io);
     const followerSocketHandler: SocketIOFollowerHandler = new SocketIOFollowerHandler(io);
     const userSocketHandler: SocketIOUserHandler = new SocketIOUserHandler(io);
+    const notificationSocketHandler: SocketIONotificationHandler = new SocketIONotificationHandler();
+
 
     postSocketHandler.listen();
     followerSocketHandler.listen();
     userSocketHandler.listen();
+    notificationSocketHandler.listen(io);
   }
 }
