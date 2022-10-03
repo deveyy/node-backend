@@ -29,7 +29,6 @@ class ReactionWorker {
       done(error as Error);
     }
   }
-
 }
 
 export const reactionWorker: ReactionWorker = new ReactionWorker();

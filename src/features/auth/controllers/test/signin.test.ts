@@ -5,9 +5,11 @@ import { CustomError } from '@global/helpers/error-handler';
 import { SignIn } from '@auth/controllers/signin';
 import { Helpers } from '@global/helpers/helpers';
 import { authService } from '@service/db/auth.service';
+import { userService } from '@service/db/user.service';
+import { mockExistingUser } from '@root/mocks/user.mock';
 
-const USERNAME = 'Manny';
-const PASSWORD = 'manny1';
+const USERNAME = 'ddthien';
+const PASSWORD = 'ddthien';
 const WRONG_USERNAME = 'ma';
 const WRONG_PASSWORD = 'ma';
 const LONG_PASSWORD = 'mathematics1';
@@ -109,6 +111,7 @@ describe('SignIn', () => {
     const res: Response = authMockResponse();
     authMock.comparePassword = () => Promise.resolve(true);
     jest.spyOn(authService, 'getAuthUserByUsername').mockResolvedValue(authMock);
+    jest.spyOn(userService, 'getUserByAuthId').mockResolvedValue(mockExistingUser);
 
     await SignIn.prototype.read(req, res);
     expect(req.session?.jwt).toBeDefined();

@@ -1,5 +1,5 @@
 import express, { Express } from 'express';
-import { bdigitalServer } from '@root/setupServer';
+import { BdigitalServer } from '@root/setupServer';
 import databaseConnection from '@root/setupDatabase';
 import { config } from '@root/config';
 
@@ -8,7 +8,7 @@ class Application {
     this.loadConfig();
     databaseConnection();
     const app: Express = express();
-    const server: bdigitalServer = new bdigitalServer(app);
+    const server: BdigitalServer = new BdigitalServer(app);
     server.start();
   }
 

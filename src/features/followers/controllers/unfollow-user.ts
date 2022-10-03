@@ -1,5 +1,6 @@
-import { Request, Response } from 'express';
 import HTTP_STATUS from 'http-status-codes';
+
+import { Request, Response } from 'express';
 import { FollowerCache } from '@service/redis/follower.cache';
 import { followerQueue } from '@service/queues/follower.queue';
 

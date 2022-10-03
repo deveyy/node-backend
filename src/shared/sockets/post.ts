@@ -13,11 +13,11 @@ export class SocketIOPostHandler {
   }
 
   public listen(): void {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     this.io.on('connection', (socket: Socket) => {
       socket.on('reaction', (reaction: IReactionDocument) => {
         this.io.emit('update like', reaction);
       });
+
       socket.on('comment', (data: ICommentDocument) => {
         this.io.emit('update comment', data);
       });

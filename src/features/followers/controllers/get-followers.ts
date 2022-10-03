@@ -1,7 +1,8 @@
-import { Request, Response } from 'express';
-import { ObjectId } from 'mongodb';
 import HTTP_STATUS from 'http-status-codes';
 import mongoose from 'mongoose';
+
+import { Request, Response } from 'express';
+import { ObjectId } from 'mongodb';
 import { FollowerCache } from '@service/redis/follower.cache';
 import { IFollowerData } from '@follower/interfaces/follower.interface';
 import { followerService } from '@service/db/follower.service';

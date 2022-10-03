@@ -1,10 +1,11 @@
+import HTTP_STATUS from 'http-status-codes';
+
 import { Request, Response } from 'express';
 import { PostCache } from '@service/redis/post.cache';
-import HTTP_STATUS from 'http-status-codes';
 import { postQueue } from '@service/queues/post.queue';
 import { socketIOPostObject } from '@socket/post';
 import { joiValidation } from '@global/decorators/joi-validation.decorators';
-import { postSchema, postWithImageSchema } from '@post/schemas/post.schemes';
+import { postSchema, postWithImageSchema } from '@post/schemas/post';
 import { IPostDocument } from '@post/interfaces/post.interface';
 import { UploadApiResponse } from 'cloudinary';
 import { uploads } from '@global/helpers/cloudinary-upload';

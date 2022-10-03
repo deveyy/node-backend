@@ -1,11 +1,12 @@
+import mongoose from 'mongoose';
+import HTTP_STATUS from 'http-status-codes';
+
 import { Request, Response } from 'express';
 import { ObjectId } from 'mongodb';
-import HTTP_STATUS from 'http-status-codes';
 import { FollowerCache } from '@service/redis/follower.cache';
 import { UserCache } from '@service/redis/user.cache';
 import { IUserDocument } from '@user/interfaces/user.interface';
 import { IFollowerData } from '@follower/interfaces/follower.interface';
-import mongoose from 'mongoose';
 import { socketIOFollowerObject } from '@socket/follower';
 import { followerQueue } from '@service/queues/follower.queue';
 
@@ -38,7 +39,6 @@ export class Add {
       username: req.currentUser!.username,
       followerDocumentId: followerObjectId
     });
-
     res.status(HTTP_STATUS.OK).json({ message: 'Following user now' });
   }
 

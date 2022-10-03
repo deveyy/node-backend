@@ -27,8 +27,8 @@ describe('SignUp', () => {
   it('should throw an error if username is not available', () => {
     const req: Request = authMockRequest({}, {
       username: '',
-      email: 'manny@test.com',
-      password: 'qwerty',
+      email: 'ddthien@gmail.com',
+      password: 'ddthien',
       avatarColor: 'red',
       avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
     }) as Request;
@@ -45,8 +45,8 @@ describe('SignUp', () => {
       {},
       {
         username: 'ma',
-        email: 'manny@test.com',
-        password: 'qwerty',
+        email: 'ddthien@gmail.com',
+        password: 'ddthien',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
       }
@@ -62,9 +62,9 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'mathematics',
-        email: 'manny@test.com',
-        password: 'qwerty',
+        username: 'ddthien',
+        email: 'ddthien@gmail.com',
+        password: 'ddthien',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
       }
@@ -80,9 +80,9 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Manny',
+        username: 'ddthien',
         email: 'not valid',
-        password: 'qwerty',
+        password: 'ddthien',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
       }
@@ -98,7 +98,7 @@ describe('SignUp', () => {
   it('should throw an error if email is not available', () => {
     const req: Request = authMockRequest(
       {},
-      { username: 'Manny', email: '', password: 'qwerty', avatarColor: 'red', avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==' }
+      { username: 'ddthien', email: '', password: 'qwerty', avatarColor: 'red', avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==' }
     ) as Request;
     const res: Response = authMockResponse();
     SignUp.prototype.create(req, res).catch((error: CustomError) => {
@@ -111,8 +111,8 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Manny',
-        email: 'manny@test.com',
+        username: 'ddthien',
+        email: 'ddthien@gmail.com',
         password: '',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
@@ -129,9 +129,9 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Manny',
-        email: 'manny@test.com',
-        password: 'ma',
+        username: 'ddthien',
+        email: 'ddthien@gmail.com',
+        password: 'ddthien',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
       }
@@ -147,9 +147,9 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Manny',
-        email: 'manny@test.com',
-        password: 'mathematics1',
+        username: 'ddthien',
+        email: 'ddthien@gmail.com',
+        password: 'ddthien',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
       }
@@ -165,9 +165,9 @@ describe('SignUp', () => {
     const req: Request = authMockRequest(
       {},
       {
-        username: 'Manny',
-        email: 'manny@test.com',
-        password: 'qwerty',
+        username: 'ddthien',
+        email: 'ddthien@gmail.com',
+        password: 'ddthien',
         avatarColor: 'red',
         avatarImage: 'data:text/plain;base64,SGVsbG8sIFdvcmxkIQ=='
       }

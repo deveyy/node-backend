@@ -81,9 +81,6 @@ web_modules/
 .env.development.local
 .env.test.local
 .env.production.local
-.env.develop
-.env.staging
-.env.production
 .env.local
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -137,6 +134,7 @@ build
 .yarn/install-state.gz
 .pnp.*
 
+#
 package-lock.json
 
 ### Node Patch ###

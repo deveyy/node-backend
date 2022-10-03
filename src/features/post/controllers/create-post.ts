@@ -1,8 +1,9 @@
+import HTTP_STATUS from 'http-status-codes';
+
 import { joiValidation } from '@global/decorators/joi-validation.decorators';
-import { postSchema, postWithImageSchema } from '@post/schemas/post.schemes';
+import { postSchema, postWithImageSchema } from '@post/schemas/post';
 import { Request, Response } from 'express';
 import { ObjectId } from 'mongodb';
-import HTTP_STATUS from 'http-status-codes';
 import { IPostDocument } from '@post/interfaces/post.interface';
 import { PostCache } from '@service/redis/post.cache';
 import { socketIOPostObject } from '@socket/post';

@@ -1,12 +1,15 @@
+import JWT from 'jsonwebtoken';
+import HTTP_STATUS from 'http-status-codes';
+
 import { Request, Response } from 'express';
 import { config } from '@root/config';
-import JWT from 'jsonwebtoken';
 import { joiValidation } from '@global/decorators/joi-validation.decorators';
-import HTTP_STATUS from 'http-status-codes';
 import { authService } from '@service/db/auth.service';
 import { loginSchema } from '@auth/schemas/signin';
 import { IAuthDocument } from '@auth/interfaces/auth.interface';
 import { BadRequestError } from '@global/helpers/error-handler';
+import { userService } from '@service/db/user.service';
+import { IUserDocument } from '@user/interfaces/user.interface';
 
 export class SignIn {
   @joiValidation(loginSchema)
@@ -14,17 +17,17 @@ export class SignIn {
     const { username, password } = req.body;
     const existingUser: IAuthDocument = await authService.getAuthUserByUsername(username);
     if (!existingUser) {
-      throw new BadRequestError('User error');
+      throw new BadRequestError('Invalid credentials');
     }
 
     const passwordsMatch: boolean = await existingUser.comparePassword(password);
     if (!passwordsMatch) {
-      throw new BadRequestError('Password error');
+      throw new BadRequestError('Invalid credentials');
     }
-
+    const user: IUserDocument = await userService.getUserByAuthId(`${existingUser._id}`);
     const userJwt: string = JWT.sign(
       {
-        userId: existingUser._id,
+        userId: user._id,
         uId: existingUser.uId,
         email: existingUser.email,
         username: existingUser.username,
