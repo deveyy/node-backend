@@ -30,3 +30,20 @@ GET {{baseUrl}}/{{urlPath}}/user/followers/6339076b4153f2489a3ed50f
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
+
+
+###
+PUT {{baseUrl}}/{{urlPath}}/user/block/6339076b4153f2489a3ed50f
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{}
+
+###
+PUT {{baseUrl}}/{{urlPath}}/user/unblock/6339076b4153f2489a3ed50f
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{}
