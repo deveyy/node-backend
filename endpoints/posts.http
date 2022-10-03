@@ -51,7 +51,7 @@ Accept: application/json
 withCredentials: true
 
 ###
-PUT {{baseUrl}}/{{urlPath}}/post/image/62e813ce588c54290311727d
+PUT {{baseUrl}}/{{urlPath}}/post/image/633909b4f987ae6d75cb2ff3
 Content-Type: application/json
 Accept: application/json
 withCredentials: true,

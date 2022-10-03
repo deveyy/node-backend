@@ -15,3 +15,34 @@ withCredentials: true
   "postReactions": {"like": 0,"love": 0,"happy": 0,"sad": 1,"wow": 0,"angry": 0},
   "profilePicture": "https://res.cloudinary.com/dtnfoho5x/image/upload/v1664607788/6337e628f6f0137f40d5839b"
 }
+
+###
+
+DELETE {{baseUrl}}/{{urlPath}}/post/reaction/63396995ffea3396bd0b9285/happy/{"like":0,"love":0,"happy":0,"sad":0,"wow":0,"angry":0}
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+
+###
+
+GET {{baseUrl}}/{{urlPath}}/post/reactions/633909b4f987ae6d75cb2ff3
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+
+###
+
+GET {{baseUrl}}/{{urlPath}}/post/single/reaction/username/ddthien/633909b4f987ae6d75cb2ff3
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+
+###
+
+GET {{baseUrl}}/{{urlPath}}/post/reactions/username/ddthien
+Content-Type: application/json
+Accept: application/json
+withCredentials: true

@@ -34,7 +34,7 @@ export interface IAuthMock {
 }
 
 export const authUserPayload: AuthPayload = {
-  userId: '60263f14648fed5246e322d9',
+  userId: '6339076b4153f2489a3ed50f',
   uId: '1621613119252066',
   username: 'Manny',
   email: 'manny@me.com',
@@ -43,22 +43,22 @@ export const authUserPayload: AuthPayload = {
 };
 
 export const authMock = {
-  _id: '60263f14648fed5246e322d3',
-  uId: '1621613119252066',
-  username: 'Manny',
-  email: 'manny@me.com',
+  _id: '6339076b4153f2489a3ed50f',
+  uId: '72076739424',
+  username: 'ddthien',
+  email: 'ddthien@gmail.com',
   avatarColor: '#9c27b0',
   createdAt: new Date(),
   save: () => {}
 } as unknown as IAuthDocument;
 
 export const signUpMockData = {
-  _id: '605727cd646eb50e668a4e13',
-  uId: '92241616324557172',
-  username: 'Manny',
-  email: 'manny@test.com',
+  _id: '6339076b4153f2489a3ed50f',
+  uId: '72076739424',
+  username: 'ddthien',
+  email: 'ddthien@gmail.com',
   avatarColor: '#ff9800',
-  password: 'manny1',
+  password: 'ddthien',
   birthDay: { month: '', day: '' },
   postCount: 0,
   gender: '',
@@ -76,5 +76,5 @@ export const signUpMockData = {
   followersCount: 0,
   followingCount: 0,
   notifications: { messages: true, reactions: true, comments: true, follows: true },
-  profilePicture: 'https://res.cloudinary.com/ratingapp/image/upload/605727cd646eb50e668a4e13'
+  profilePicture: 'https://res.cloudinary.com/dtnfoho5x/image/upload/v1664607788/6337e628f6f0137f40d5839b'
 };
