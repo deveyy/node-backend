@@ -42,12 +42,12 @@ aliases:
       name: Zip project
       command: |
           rm -rf node_modules
-          zip bdigital.zip -r .
+          zip chatapp.zip -r .
           echo "Zip successful"
   - &notify-on-fail
     slack/notify:
       event: fail
-      channel: 'bdigital-builds'
+      channel: 'Bdigital-builds'
       template: ''
       custom: |
         {
@@ -231,7 +231,7 @@ jobs:
       - run: echo "Slack notification"
       - slack/notify:
           event: 'always'
-          channel: 'bdigital-builds'
+          channel: 'Bdigital-builds'
           template: ''
           custom: |
             {
