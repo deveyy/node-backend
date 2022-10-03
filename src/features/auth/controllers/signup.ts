@@ -1,3 +1,6 @@
+import HTTP_STATUS from 'http-status-codes';
+import JWT from 'jsonwebtoken';
+
 import { ObjectId } from 'mongodb';
 import { Request, Response } from 'express';
 import { joiValidation } from '@global/decorators/joi-validation.decorators';
@@ -7,10 +10,8 @@ import { authService } from '@service/db/auth.service';
 import { Helpers } from '@global/helpers/helpers';
 import { UploadApiResponse } from 'cloudinary';
 import { uploads } from '@global/helpers/cloudinary-upload';
-import HTTP_STATUS from 'http-status-codes';
 import { IUserDocument } from '@user/interfaces/user.interface';
 import { UserCache } from '@service/redis/user.cache';
-import JWT from 'jsonwebtoken';
 import { authQueue } from '@service/queues/auth.queue';
 import { userQueue } from '@service/queues/user.queue';
 import { config } from '@root/config';
@@ -49,7 +50,7 @@ export class SignUp {
     await userCache.saveUserToCache(`${userObjectId}`, uId, userDataForCache);
 
     // Add to database
-    authQueue.addAuthUserJob('addAuthUserToDB', { value: userDataForCache });
+    authQueue.addAuthUserJob('addAuthUserToDB', { value: authData });
     userQueue.addUserJob('addUserToDB', { value: userDataForCache });
 
     const userJwt: string = SignUp.prototype.signToken(authData, userObjectId);

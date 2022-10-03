@@ -21,7 +21,7 @@ import { SocketIOUserHandler } from '@socket/user';
 const SERVER_PORT = 5000;
 const log: Logger = config.createLogger('server');
 
-export class bdigitalServer {
+export class BdigitalServer {
   private app: Application;
 
   constructor(app: Application) {

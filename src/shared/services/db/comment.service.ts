@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ICommentDocument, ICommentJob, ICommentNameList, IQueryComment } from '@comment/interfaces/comment.interface';
 import { CommentsModel } from '@comment/models/comment.schema';
 import { IPostDocument } from '@post/interfaces/post.interface';
@@ -18,7 +19,6 @@ class CommentService {
       { new: true }
     ) as Query<IPostDocument, IPostDocument>;
     const user: Promise<IUserDocument> = userCache.getUserFromCache(userTo) as Promise<IUserDocument>;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const response: [ICommentDocument, IPostDocument, IUserDocument] = await Promise.all([comments, post, user]);
 
     // send comments notification

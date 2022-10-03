@@ -24,7 +24,7 @@ describe('Add', () => {
     const req: Request = reactionMockRequest(
       {},
       {
-        postId: '633909b4f987ae6d75cb2ff3',
+        postId: '6027f77087c9d9ccb1555268',
         comment: 'This is a comment',
         profilePicture: 'https://place-hold.it/500x500',
         userTo: `${existingUser._id}`
@@ -44,7 +44,7 @@ describe('Add', () => {
     const req: Request = reactionMockRequest(
       {},
       {
-        postId: '633909b4f987ae6d75cb2ff3',
+        postId: '6027f77087c9d9ccb1555268',
         comment: 'This is a comment',
         profilePicture: 'https://place-hold.it/500x500',
         userTo: `${existingUser._id}`

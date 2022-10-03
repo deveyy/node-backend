@@ -1,4 +1,5 @@
 import HTTP_STATUS from 'http-status-codes';
+
 import { Request, Response } from 'express';
 
 export class SignOut {

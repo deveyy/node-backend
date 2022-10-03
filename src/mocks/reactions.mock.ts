@@ -39,28 +39,28 @@ export interface IParams {
 }
 
 export const reactionData: IReactionDocument = {
-  _id: '63396995ffea3396bd0b9285',
-  username: 'Ddthien',
-  postId: '633909b4f987ae6d75cb2ff3',
-  profilePicture: 'https://res.cloudinary.com/dtnfoho5x/image/upload/v1664607788/6337e628f6f0137f40d5839b',
+  _id: '6064861bc25eaa5a5d2f9bf4',
+  username: 'Danny',
+  postId: '6027f77087c9d9ccb1555268',
+  profilePicture: 'https://res.cloudinary.com/ratingapp/image/upload/6064793b091bf02b6a71067a',
   comment: 'This is a comment',
   createdAt: new Date(),
-  userTo: '6339076b4153f2489a3ed50f',
+  userTo: '60263f14648fed5246e322d9',
   type: 'love'
 } as IReactionDocument;
 
 export const commentsData: ICommentDocument = {
-  _id: '633a36dafb0e212eeaec93a4',
-  username: 'Ddthien',
+  _id: '6064861bc25eaa5a5d2f9bf4',
+  username: 'Danny',
   avatarColor: '#9c27b0',
-  postId: '633909b4f987ae6d75cb2ff3',
-  profilePicture: 'https://res.cloudinary.com/dtnfoho5x/image/upload/v1664607788/6337e628f6f0137f40d5839b',
+  postId: '6027f77087c9d9ccb1555268',
+  profilePicture: 'https://res.cloudinary.com/ratingapp/image/upload/6064793b091bf02b6a71067a',
   comment: 'This is a comment',
   createdAt: new Date(),
-  userTo: '6339076b4153f2489a3ed50f'
+  userTo: '60263f14648fed5246e322d9'
 } as unknown as ICommentDocument;
 
 export const commentNames: ICommentNameList = {
   count: 1,
-  names: ['Ddthien']
+  names: ['Danny']
 };

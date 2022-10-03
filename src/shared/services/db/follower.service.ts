@@ -2,10 +2,10 @@ import { FollowerModel } from '@follower/models/follower.schema';
 import { UserModel } from '@user/models/user.schema';
 import { ObjectId, BulkWriteResult } from 'mongodb';
 import mongoose, { Query } from 'mongoose';
-import { IQueryDeleted, IQueryComplete } from '@post/interfaces/post.interface';
 import { IFollowerData, IFollowerDocument } from '@follower/interfaces/follower.interface';
-class FollowerService {
+import { IQueryDeleted, IQueryComplete } from '@post/interfaces/post.interface';
 
+class FollowerService {
   public async addFollowerToDB(userId: string, followeeId: string, username: string, followerDocumentId: ObjectId): Promise<void> {
     const followeeObjectId: ObjectId = new mongoose.Types.ObjectId(followeeId);
     const followerObjectId: ObjectId = new mongoose.Types.ObjectId(userId);
