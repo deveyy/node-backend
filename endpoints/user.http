@@ -44,9 +44,9 @@ Accept: application/json
 withCredentials: true
 
 {
-  "currentPassword": "qwerty",
-  "newPassword": "qwerty1",
-  "confirmPassword": "qwerty1"
+  "currentPassword": "ddthien",
+  "newPassword": "ddthien1",
+  "confirmPassword": "ddthien1"
 }
 
 ###

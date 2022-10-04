@@ -10,6 +10,10 @@ class UserService {
     await UserModel.create(data);
   }
 
+  public async updatePassword(username: string, hashedPassword: string): Promise<void> {
+    await AuthModel.updateOne({ username }, { $set: { password: hashedPassword }}).exec();
+  }
+
   public async getUserById(userId: string): Promise<IUserDocument> {
     const users: IUserDocument[] = await UserModel.aggregate([
       { $match: { _id: new mongoose.Types.ObjectId(userId) } },
