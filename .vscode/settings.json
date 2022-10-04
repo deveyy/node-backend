@@ -23,6 +23,7 @@
       "lcov",
       "LPUSH",
       "LREM",
+      "LSET",
       "paren",
       "RPUSH",
       "sendgrid",
