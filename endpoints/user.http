@@ -14,13 +14,13 @@ Accept: application/json
 withCredentials: true
 
 ###
-GET {{baseUrl}}/{{urlPath}}/user/profile/62f29f71da585226216b2724
+GET {{baseUrl}}/{{urlPath}}/user/profile/633acb89c9325e21af77cb18
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
 
 ###
-GET {{baseUrl}}/{{urlPath}}/user/profile/posts/danny/62f2962c6b761b208a728e91/643053551256
+GET {{baseUrl}}/{{urlPath}}/user/profile/posts/Ddthien/633acb89c9325e21af77cb18/18476689942
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
