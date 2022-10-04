@@ -12,6 +12,7 @@ import { imageRoutes } from '@image/routes/imageRoutes';
 import { chatRoutes } from '@chat/routes/chatRoutes';
 import { userRoutes } from '@user/routes/userRoutes';
 import { healthRoutes } from '@user/routes/healthRoutes';
+import { showreelRoutes } from '@showreel/routes/showreelRoutes';
 
 const BASE_PATH = '/api/v1';
 
@@ -36,6 +37,7 @@ export default (app: Application) => {
     app.use(BASE_PATH, authMiddleware.verifyUser, imageRoutes.routes());
     app.use(BASE_PATH, authMiddleware.verifyUser, chatRoutes.routes());
     app.use(BASE_PATH, authMiddleware.verifyUser, userRoutes.routes());
+    app.use(BASE_PATH, authMiddleware.verifyUser, showreelRoutes.routes());
 
   };
   routes();
