@@ -32,7 +32,7 @@ Accept: application/json
 withCredentials: true
 
 ###
-GET {{baseUrl}}/{{urlPath}}/user/profile/search/danny
+GET {{baseUrl}}/{{urlPath}}/user/profile/search/d
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
