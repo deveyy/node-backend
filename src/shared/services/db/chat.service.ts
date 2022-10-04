@@ -35,6 +35,48 @@ class ChatService {
     });
   }
 
+  public async getUserConversationList(userId: ObjectId): Promise<IMessageData[]> {
+    const messages: IMessageData[] = await MessageModel.aggregate([
+      { $match: { $or: [{ senderId: userId }, { receiverId: userId }] }},
+      { $group: {
+        _id: '$conversationId',
+        result: { $last: '$$ROOT' }
+      }},
+      {
+        $project: {
+          _id: '$result._id',
+          conversationId: '$result.conversationId',
+          receiverId: '$result.receiverId',
+          receiverUsername: '$result.receiverUsername',
+          receiverAvatarColor: '$result.receiverAvatarColor',
+          receiverProfilePicture: '$result.receiverProfilePicture',
+          senderUsername: '$result.senderUsername',
+          senderId: '$result.senderId',
+          senderAvatarColor: '$result.senderAvatarColor',
+          senderProfilePicture: '$result.senderProfilePicture',
+          body: '$result.body',
+          isRead: '$result.isRead',
+          gifUrl: '$result.gifUrl',
+          selectedImage: '$result.selectedImage',
+          reaction: '$result.reaction',
+          createdAt: '$result.createdAt'
+        }
+      },
+      { $sort: { createdAt: 1 }}
+    ]);
+    return messages;
+  }
+
+  public async getMessages(senderId: ObjectId, receiverId: ObjectId, sort: Record<string, 1 | -1>): Promise<IMessageData[]> {
+    const query = {
+      $or: [
+        { senderId, receiverId },
+        { senderId: receiverId, receiverId: senderId },
+      ]
+    };
+    const messages: IMessageData[] = await MessageModel.aggregate([{ $match: query}, { $sort: sort }]);
+    return messages;
+  }
 
 }
 export const chatService: ChatService = new ChatService();

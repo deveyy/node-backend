@@ -48,7 +48,7 @@ Accept: application/json
 withCredentials: true
 
 ###
-GET {{baseUrl}}/{{urlPath}}/chat/message/user/62f29f71da585226216b2724
+GET {{baseUrl}}/{{urlPath}}/chat/message/user/633acb89c9325e21af77cb18
 Content-Type: application/json
 Accept: application/json
 withCredentials: true
