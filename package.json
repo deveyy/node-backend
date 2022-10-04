@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "SET NODE_ENV=production pm2 start ./build/src/app.js -i 5 --attach --watch | bunyan -o short",
+    "start": "NODE_ENV=production pm2 start ./build/src/app.js -i 5 --attach --watch | bunyan -o short",
     "stop": "pm2 stop all",
     "delete": "pm2 delete all",
     "dev": "nodemon -r tsconfig-paths/register src/app.ts | bunyan -o short",
