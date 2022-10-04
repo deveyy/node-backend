@@ -66,8 +66,8 @@ Accept: application/json
 withCredentials: true
 
 {
-  "senderId": "62f2962c6b761b208a728e91",
-  "receiverId": "62f29f71da585226216b2724"
+  "senderId": "633acb89c9325e21af77cb18",
+  "receiverId": "633acb89c9325e21af77cb18"
 }
 
 ###
