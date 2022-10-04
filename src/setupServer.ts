@@ -44,6 +44,7 @@ export class BdigitalServer {
   }
 
   private securityMiddleware(app: Application): void {
+    app.set('trust proxy', 1);
     app.use(
       cookieSession({
         name: 'session',
