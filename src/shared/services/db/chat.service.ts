@@ -78,5 +78,14 @@ class ChatService {
     return messages;
   }
 
+  public async markMessageAsDeleted(messageId: string, type: string): Promise<void> {
+    if(type === 'deleteForMe') {
+      await MessageModel.updateOne({ _id: messageId }, { $set: { deleteForMe: true }}).exec();
+    } else {
+      await MessageModel.updateOne({ _id: messageId }, { $set: { deleteForMe: true, deleteForEveryone: true }}).exec();
+    }
+  }
+
+
 }
 export const chatService: ChatService = new ChatService();
