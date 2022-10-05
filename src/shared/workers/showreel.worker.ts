@@ -8,10 +8,10 @@ const log: Logger = config.createLogger('showreelWorker');
 class ShowreelWorker {
   async saveShowreelToDB(job: Job, done: DoneCallback): Promise<void> {
     try {
-      const { data } = job;
-      await showreelService.addPostToDB(data);
+      const { key, value } = job.data;
+      await showreelService.addPostToDB(key, value);
       job.progress(100);
-      done(null, data);
+      done(null, job.data);
     } catch (error) {
       log.error(error);
       done(error as Error);

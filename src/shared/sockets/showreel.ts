@@ -1,18 +1,11 @@
 import { Server } from 'socket.io';
 
-export let socketIOShowreelObject: Server;
+let socketIOShowreelObject: Server;
 
 export class SocketIOShowreelHandler {
-  private io: Server;
-
-  constructor(io: Server) {
-    this.io = io;
+  public listen(io: Server): void {
     socketIOShowreelObject = io;
   }
-
-  public listen(): void {
-    this.io.on('connection', () => {
-      console.log('Error');
-    });
-  }
 }
+
+export { socketIOShowreelObject };

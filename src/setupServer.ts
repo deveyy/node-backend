@@ -22,6 +22,7 @@ import { SocketIOImageHandler } from '@socket/image';
 import { SocketIOChatHandler } from '@socket/chat';
 
 import apiStats from 'swagger-stats';
+import { SocketIOShowreelHandler } from '@socket/showreel';
 
 
 const SERVER_PORT = 5000;
@@ -140,6 +141,7 @@ export class BdigitalServer {
     const notificationSocketHandler: SocketIONotificationHandler = new SocketIONotificationHandler();
     const imageSocketHandler: SocketIOImageHandler = new SocketIOImageHandler();
     const chatSocketHandler: SocketIOChatHandler = new SocketIOChatHandler(io);
+    const showreelSocketHandler: SocketIOShowreelHandler = new SocketIOShowreelHandler();
 
     postSocketHandler.listen();
     followerSocketHandler.listen();
@@ -147,5 +149,6 @@ export class BdigitalServer {
     notificationSocketHandler.listen(io);
     imageSocketHandler.listen(io);
     chatSocketHandler.listen();
+    showreelSocketHandler.listen(io);
   }
 }

@@ -1,12 +1,15 @@
 import { ShowreelModel } from '@showreel/models/showreel.schema';
 import { IGetShowreelQuery, IQueryComplete, IQueryDeleted, IShowreelDocument } from '@showreel/interfaces/showreel.interface';
 import { Query, UpdateQuery } from 'mongoose';
+import { IUserDocument } from '@user/interfaces/user.interface';
+import { UserModel } from '@user/models/user.schema';
 
 class ShowreelService {
 
-  public async addPostToDB(createdShowreel: IShowreelDocument): Promise<void> {
+  public async addPostToDB(userId:string, createdShowreel: IShowreelDocument): Promise<void> {
     const showreel: Promise<IShowreelDocument> = ShowreelModel.create(createdShowreel);
-    await Promise.all([showreel]);
+    const user: UpdateQuery<IUserDocument> = UserModel.updateOne({ _id: userId });
+    await Promise.all([showreel, user]);
   }
 
   public async getShowreels(query: IGetShowreelQuery, skip: number, limit: number): Promise<IShowreelDocument[]> {
