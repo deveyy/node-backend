@@ -12,16 +12,17 @@ class ShowreelService {
     await Promise.all([showreel, user]);
   }
 
-  public async getShowreels(query: IGetShowreelQuery, skip: number, limit: number): Promise<IShowreelDocument[]> {
-    let showreelShowreel = {};
+  public async getShowreels(query: IGetShowreelQuery, skip = 0, limit = 0, sort: Record<string, 1 | -1>): Promise<IShowreelDocument[]> {
+    let showreelQuery= {};
     if(query?.url) {
-      showreelShowreel = { $or: [{url: {$ne: ''}}]};
+      showreelQuery = { $or: [{url: {$ne: ''}}]};
     } else {
-      showreelShowreel = query;
+      showreelQuery = query;
     }
 
     const showreel: IShowreelDocument[] = await ShowreelModel.aggregate([
-      { $match: showreelShowreel},
+      { $match: showreelQuery},
+      { $sort: sort },
       { $skip: skip},
       { $limit: limit}
     ]);

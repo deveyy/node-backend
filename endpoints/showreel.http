@@ -13,3 +13,11 @@ withCredentials: true
  "description": "this is showreel",
  "url": "http://youtube.com"
 }
+
+
+###
+# GET {{baseUrl}}/{{urlPath}}/showreel/all/<page-number>
+GET {{baseUrl}}/{{urlPath}}/showreel/all/1
+Content-Type: application/json
+Accept: application/json
+withCredentials: true

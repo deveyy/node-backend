@@ -16,11 +16,10 @@ export interface IShowreelDocument extends Document {
 export interface IGetShowreelQuery {
   _id?: ObjectId | string;
   username?: string;
-  title: string;
-  timeline: string;
-  description: string;
+  title?: string;
+  timeline?: string;
+  description?: string;
   url?: string;
-  createdShowreel: IShowreelDocument;
 }
 
 export interface ISaveShowreelToCache {
