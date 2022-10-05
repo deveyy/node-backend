@@ -36,7 +36,7 @@ class ReactionService {
         },
         { new: true }
       )
-    ]) as [IUserDocument, IReactionDocument, IPostDocument];
+    ]) as unknown as[IUserDocument, IReactionDocument, IPostDocument];
 
     // send reactions notification
     if (updatedReaction[0].notifications.reactions && userTo !== userFrom) {
