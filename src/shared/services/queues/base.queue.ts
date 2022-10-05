@@ -13,8 +13,9 @@ import { IBlockedUserJobData, IFollowerJobData } from '@follower/interfaces/foll
 import { IFileImageJobData } from '@image/interfaces/image.interface';
 import { INotificationJobData } from '@notification/interfaces/notification.interface';
 import { IChatJobData, IMessageData } from '@chat/interfaces/chat.interface';
+import { IShowreelJobData } from '@showreel/interfaces/showreel.interface';
 
-type IBaseJobData = IAuthJob | IEmailJob | IPostJobData | IReactionJob | ICommentJob | IFollowerJobData | IBlockedUserJobData | INotificationJobData | IFileImageJobData | IChatJobData | IMessageData | IUserJob;
+type IBaseJobData = IAuthJob | IEmailJob | IPostJobData | IReactionJob | ICommentJob | IFollowerJobData | IBlockedUserJobData | INotificationJobData | IFileImageJobData | IChatJobData | IMessageData | IUserJob | IShowreelJobData;
 
 let bullAdapters: BullAdapter[] = [];
 export let serverAdapter: ExpressAdapter;

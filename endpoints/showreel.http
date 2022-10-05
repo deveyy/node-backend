@@ -1,0 +1,15 @@
+@baseUrl = http://localhost:5000
+@urlPath = api/v1
+
+###
+POST {{baseUrl}}/{{urlPath}}/showreel
+Content-Type: application/json
+Accept: application/json
+withCredentials: true
+
+{
+ "title": "Showreel",
+ "timeline": "this is timeline",
+ "description": "this is showreel",
+ "url": "http://youtube.com"
+}
